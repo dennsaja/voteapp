@@ -23,10 +23,6 @@ app.use(express.static(path.join(__dirname, 'public')));
 app.use(expressLayouts);
 app.set('layout', 'layout');
 
-
-import { sql } from '@vercel/postgres';
-// ...hapus semua kode SQLite...
-
 // Inisialisasi tabel (jalankan sekali di awal, atau gunakan migration tool)
 await sql`
   CREATE TABLE IF NOT EXISTS tokens (
@@ -97,4 +93,5 @@ app.get('/admin/results', async (req, res) => {
 app.listen(PORT, () => {
   console.log(`✅ Server berjalan di http://localhost:${PORT}`);
 });
+
 
