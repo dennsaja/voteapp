@@ -9,7 +9,7 @@
     "dev": "nodemon api/index.js"
   },
   "dependencies": {
-    "@vercel/postgres": "^1.4.0",
+    "@vercel/postgres": "latest",
     "cookie-parser": "^1.4.6",
     "ejs": "^3.1.10",
     "express": "^4.21.2",
