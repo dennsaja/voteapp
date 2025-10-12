@@ -1,12 +1,11 @@
 import express from 'express';
 import path from 'path';
-import sqlite3 from 'sqlite3';
-import { open } from 'sqlite';
 import { nanoid } from 'nanoid';
 import { fileURLToPath } from 'url';
 import { dirname } from 'path';
 import qrcode from 'qrcode';
 import expressLayouts from 'express-ejs-layouts';
+import { sql } from '@vercel/postgres';
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = dirname(__filename);
@@ -98,3 +97,4 @@ app.get('/admin/results', async (req, res) => {
 app.listen(PORT, () => {
   console.log(`✅ Server berjalan di http://localhost:${PORT}`);
 });
+
