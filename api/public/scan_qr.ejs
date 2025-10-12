@@ -1,28 +1,30 @@
 <section>
-<h2>Scan QR Token</h2>
-<div id="reader" style="width:300px"></div>
-<p id="result"></p>
+  <h2>Scan QR Token</h2>
+  <div id="reader" style="width:300px"></div>
+  <p id="result"></p>
 </section>
-<script src="https://unpkg.com/html5-qrcode@2.3.8/html5-qrcode.min.js"></script>
+<script src="https://unpkg.com/html5-qrcode"></script>
 <script>
-const resultElem = document.getElementById('result');
-function onScanSuccess(decodedText) {
-resultElem.innerHTML = `<a href="${decodedText}" target="_blank">${decodedText}</a>`;
-}
-const html5QrCode = new Html5Qrcode("reader");
-Html5Qrcode.getCameras().then(cameras => {
-  if (cameras && cameras.length) {
-    html5QrCode.start(
-      cameras[0].id,
-      { fps: 10, qrbox: 250 },
-      onScanSuccess
-    ).catch(err => {
-      resultElem.innerHTML = "Gagal mengakses kamera: " + err;
-    });
-  } else {
-    resultElem.innerHTML = "Tidak ada kamera terdeteksi.";
+window.onload = function() {
+  const resultElem = document.getElementById('result');
+  function onScanSuccess(decodedText) {
+    resultElem.innerHTML = `<a href="${decodedText}" target="_blank">${decodedText}</a>`;
   }
-}).catch(err => {
-  resultElem.innerHTML = "Error kamera: " + err;
-
-});
+  const html5QrCode = new Html5Qrcode("reader");
+  Html5Qrcode.getCameras().then(cameras => {
+    if (cameras && cameras.length) {
+      html5QrCode.start(
+        cameras[0].id,
+        { fps: 10, qrbox: 250 },
+        onScanSuccess
+      ).catch(err => {
+        resultElem.innerHTML = "Gagal mengakses kamera: " + err;
+      });
+    } else {
+      resultElem.innerHTML = "Tidak ada kamera terdeteksi.";
+    }
+  }).catch(err => {
+    resultElem.innerHTML = "Error kamera: " + err;
+  });
+}
+</script>
