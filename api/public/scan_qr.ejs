@@ -12,9 +12,14 @@ window.onload = function() {
   }
   const html5QrCode = new Html5Qrcode("reader");
   Html5Qrcode.getCameras().then(cameras => {
+    let backCamera = cameras.find(cam =>
+      cam.label.toLowerCase().includes('back') ||
+      cam.label.toLowerCase().includes('environment')
+    );
+    let cameraId = backCamera ? backCamera.id : cameras[0].id;
     if (cameras && cameras.length) {
       html5QrCode.start(
-        cameras[0].id,
+        cameraId,
         { fps: 10, qrbox: 250 },
         onScanSuccess
       ).catch(err => {
