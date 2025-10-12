@@ -15,7 +15,7 @@ const PORT = process.env.PORT || 3000;
 
 // Koneksi ke database Postgres (Supabase/Neon)
 const connectionString = process.env.DATABASE_URL;
-const sql = postgres(connectionString, { ssl: 'require' });
+const sql = postgres(connectionString);
 
 // Middleware
 app.use(express.urlencoded({ extended: true }));
@@ -95,3 +95,4 @@ app.get('/admin/results', async (req, res) => {
 app.listen(PORT, () => {
   console.log(`✅ Server berjalan di http://localhost:${PORT}`);
 });
+
