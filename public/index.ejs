@@ -1,0 +1,8 @@
+<section>
+<h2>Selamat Datang di Pemilihan</h2>
+<p>Silakan klik tombol di bawah untuk mulai verifikasi token Anda.</p>
+<form method="get" action="/verify">
+<input type="hidden" name="_csrf" value="<%= csrfToken %>">
+<button type="submit">Verifikasi Token</button>
+</form>
+</section>

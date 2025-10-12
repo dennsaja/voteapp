@@ -1,0 +1,16 @@
+<section>
+<h2>Daftar Token</h2>
+<form method="post" action="/admin/tokens/new">
+<button type="submit">Buat Token Baru</button>
+</form>
+<table border="1" cellpadding="6">
+<tr><th>Token</th><th>Status</th><th>QR</th></tr>
+<% tokens.forEach(t => { %>
+<tr>
+<td><%= t.token %></td>
+<td><%= t.used ? 'Sudah digunakan' : 'Belum' %></td>
+<td><a href="/admin/qr/<%= t.token %>">Lihat QR</a></td>
+</tr>
+<% }) %>
+</table>
+</section>
