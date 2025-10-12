@@ -1,0 +1,15 @@
+<section>
+  <h2>Pilih Kandidat</h2>
+  <form method="post" action="/vote">
+    <input type="hidden" name="token" value="<%= token %>">
+    <% candidates.forEach(function(candidate) { %>
+      <div>
+        <label>
+          <input type="radio" name="candidate" value="<%= candidate %>" required>
+          <%= candidate %>
+        </label>
+      </div>
+    <% }); %>
+    <button type="submit">Kirim Pilihan</button>
+  </form>
+</section>
