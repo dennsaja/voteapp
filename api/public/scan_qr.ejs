@@ -3,7 +3,7 @@
 <div id="reader" style="width:300px"></div>
 <p id="result"></p>
 </section>
-<script src="https://unpkg.com/html5-qrcode"></script>
+<script src="https://unpkg.com/html5-qrcode@2.3.8/html5-qrcode.min.js"></script>
 <script>
 const resultElem = document.getElementById('result');
 function onScanSuccess(decodedText) {
@@ -24,4 +24,5 @@ Html5Qrcode.getCameras().then(cameras => {
   }
 }).catch(err => {
   resultElem.innerHTML = "Error kamera: " + err;
+
 });
