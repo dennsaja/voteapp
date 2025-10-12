@@ -6,6 +6,8 @@ import { dirname } from 'path';
 import qrcode from 'qrcode';
 import expressLayouts from 'express-ejs-layouts';
 import { Pool } from 'pg'; // Ganti ke pg
+import postgres from 'postgres'
+
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = dirname(__filename);
@@ -14,10 +16,8 @@ const app = express();
 const PORT = process.env.PORT || 3000;
 
 // Koneksi ke database Postgres (Neon/Supabase)
-const pool = new Pool({
-  connectionString: process.env.DATABASE_URL, // Set di Vercel env var
-  ssl: { rejectUnauthorized: false }
-});
+const connectionString = process.env.DATABASE_URL
+const pool = postgres(connectionString)
 
 // Middleware
 app.use(express.urlencoded({ extended: true }));
