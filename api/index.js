@@ -43,6 +43,12 @@ await sql`
 `;
 
 // Halaman voting (akses via token dari QR)
+
+app.get('/', (req, res) => {
+  res.render('scan_qr'); // pastikan ada file public/scan_qr.ejs
+});
+
+
 app.get('/vote', async (req, res) => {
   const { token } = req.query;
   if (!token) return res.redirect('/');
@@ -95,4 +101,5 @@ app.get('/admin/results', async (req, res) => {
 app.listen(PORT, () => {
   console.log(`✅ Server berjalan di http://localhost:${PORT}`);
 });
+
 
